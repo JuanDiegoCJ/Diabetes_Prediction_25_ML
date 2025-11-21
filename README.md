@@ -2,9 +2,10 @@
 title: dp25
 app_file: app.py
 sdk: gradio
-sdk_version: 3.38.0
+sdk_version: 5.49.1
 ---
-# Sistema de Detección de Diabetes con Random Forest
+
+# Sistema de Detección de Diabetes con Inteligencia Artificial
 
 Este proyecto implementa un sistema de **detección temprana de diabetes** utilizando un modelo de **Machine Learning (Random Forest)** entrenado sobre datasets clínicos reales. Incluye un notebook de análisis completo y una **interfaz web interactiva con Gradio** para realizar predicciones en tiempo real.
 
@@ -14,8 +15,6 @@ Este proyecto implementa un sistema de **detección temprana de diabetes** utili
 
 Proveer una herramienta de **screening médico no invasivo**, capaz de estimar el **riesgo de diabetes** de una persona mediante variables demográficas, historial médico y biomarcadores clínicos.  
 Este sistema **no reemplaza un diagnóstico profesional**, pero sirve como apoyo para una detección temprana que permita una intervención médica oportuna.
-Desarrollar un **sistema basado en Machine Learning** que utiliza el modelo **Random Forest** para la **detección temprana y tratamiento eficiente de la diabetes mellitus tipo 2**.
-
 
 ---
 
@@ -30,7 +29,7 @@ Desarrollar un **sistema basado en Machine Learning** que utiliza el modelo **Ra
 3. **Interfaz Web (Gradio)**  
    Aplicación moderna e intuitiva para ingreso de datos y obtención de resultados.
 
-4. **Sistema de Predicción**  
+4. **Sistema de Predicción IA**  
    Generación de probabilidades de riesgo y recomendaciones asociadas.
 
 ---
@@ -146,16 +145,10 @@ Desarrollar un **sistema basado en Machine Learning** que utiliza el modelo **Ra
 
 ## Importancia de Variables (Top 4)
 
-1. **Nivel de Glucosa en Sangre: 80 - 300 mg/dL**
-2. **HbA1c (Hemoglobina Glicosilada): 3.5% - 9.0%**
-3. **IMC (Índice de Masa Corporal): 10.01 - 95.69**
-4. **Edad: 0 - 100**
-
----
-
-## Enlace:
-
-[https://huggingface.co/spaces/JuanDiegoCJ/dp25](https://huggingface.co/spaces/JuanDiegoCJ/dp25)
+1. **Nivel de Glucosa en Sangre**
+2. **HbA1c**
+3. **IMC**
+4. **Edad**
 
 ---
 
