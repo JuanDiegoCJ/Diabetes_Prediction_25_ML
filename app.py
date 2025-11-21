@@ -72,6 +72,22 @@ def calcular_imc(peso, altura):
 
 # Interfaz
 with gr.Blocks(theme=gr.themes.Soft(primary_hue="blue", secondary_hue="cyan")) as interface:
+
+    # 🌟 CSS GLOBAL PARA FORZAR FONDO CLARO (ANTI DARK MODE HF)
+    gr.HTML("""
+    <style>
+        body, html, .gradio-container {
+            background-color: #E3F9FA !important;
+        }
+        :root {
+            color-scheme: light !important;
+        }
+        .block, .gr-block, .container, .panel {
+            background-color: #E3F9FA !important;
+        }
+    </style>
+    """)
+
     gr.HTML("""
     <div style="text-align:center; padding: 20px;">
         <h1 style="font-size: 2.5em; color: #273a4c;">🔬 Predicción de Diabetes</h1>
