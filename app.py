@@ -17,7 +17,7 @@ def predict_diabetes_web(name, gender, age, hypertension, heart_disease, smoking
         "Fumador actual": 3
     }
 
-    # Crear DataFrame
+    # Crear DataFrame con los datos convertidos
     input_data = pd.DataFrame({
         'gender': [gender_map[gender]],
         'age': [age],
@@ -29,7 +29,7 @@ def predict_diabetes_web(name, gender, age, hypertension, heart_disease, smoking
         'blood_glucose_level': [blood_glucose_level]
     })
 
-    # Predicción
+    # Realizar predicción y obtener probabilidad
     prediction = rf_model.predict(input_data)[0]
     probability = rf_model.predict_proba(input_data)[0][1] * 100
 
@@ -64,35 +64,19 @@ def predict_diabetes_web(name, gender, age, hypertension, heart_disease, smoking
         </div>
         """
 
-# Cálculo IMC
+# Nueva función para calcular IMC dado peso (kg) y altura (cm)
 def calcular_imc(peso, altura):
     if altura <= 0:
         return 0
     return round(peso / ((altura / 100) ** 2), 2)
 
-# Interfaz
+# Interfaz principal con Gradio
 with gr.Blocks(theme=gr.themes.Soft(primary_hue="blue", secondary_hue="cyan")) as interface:
-
-    # 🌟 CSS GLOBAL PARA FORZAR FONDO CLARO (ANTI DARK MODE HF)
-    gr.HTML("""
-    <style>
-        body, html, .gradio-container {
-            background-color: #E3F9FA !important;
-        }
-        :root {
-            color-scheme: light !important;
-        }
-        .block, .gr-block, .container, .panel {
-            background-color: #E3F9FA !important;
-        }
-    </style>
-    """)
-
     gr.HTML("""
     <div style="text-align:center; padding: 20px;">
-        <h1 style="font-size: 2.5em; color: #273a4c;">🔬 Predicción de Diabetes</h1>
-        <p style="color: #273a4c; font-size: 1.1em;">
-            Completa tus datos para conocer tu riesgo según un modelo clínico de ML.
+        <h1 style="font-size: 2.5em; color: #cee8ff;">🔬 Predicción de Diabetes</h1>
+        <p style="color: #cee8ff; font-size: 1.1em;">
+            Completa tus datos para conocer tu riesgo según un modelo clínico de inteligencia artificial.
         </p>
     </div>
     """)
@@ -114,20 +98,25 @@ with gr.Blocks(theme=gr.themes.Soft(primary_hue="blue", secondary_hue="cyan")) a
 
         with gr.Column():
             gr.Markdown("### 📊 Biomarcadores Clave")
-            bmi = gr.Slider(10, 60, step=0.1, label="IMC")
+            bmi = gr.Slider(10, 60, step=0.1, label="IMC")  # Campo que se actualizará automáticamente
 
             HbA1c_level = gr.Slider(3.0, 15.0, step=0.1, label="HbA1c (%)")
             blood_glucose_level = gr.Slider(50, 300, step=1, label="Glucosa en Sangre (mg/dL)")
 
+            # Nuevo bloque para calcular IMC a partir de peso y altura
             gr.Markdown("### ⚖️ Calcula tu IMC")
             peso = gr.Number(label="Peso (kg)")
             altura = gr.Number(label="Altura (cm)")
             calcular_btn = gr.Button("Calcular IMC")
+
+            # Al hacer clic en calcular, el valor calculado se pone directamente en el slider de IMC
             calcular_btn.click(fn=calcular_imc, inputs=[peso, altura], outputs=bmi)
 
+    # Botón para analizar riesgo y HTML para mostrar resultados
     analyze_btn = gr.Button("ANALIZAR RIESGO")
     result = gr.HTML()
 
+    # Ejecutar predicción al hacer clic
     analyze_btn.click(
         fn=predict_diabetes_web,
         inputs=[name_input, gender, age, hypertension, heart_disease,
@@ -135,6 +124,7 @@ with gr.Blocks(theme=gr.themes.Soft(primary_hue="blue", secondary_hue="cyan")) a
         outputs=result
     )
 
+    # Footer
     gr.HTML("""
     <div style="text-align:center; color:#999; font-size: 0.9em; padding-top: 30px;">
         <p>© 2025 | Esta herramienta fue elaborada con fines educativos. No reemplaza un diagnóstico médico profesional.</p>
