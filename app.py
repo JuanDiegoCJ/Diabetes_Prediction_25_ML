@@ -76,7 +76,7 @@ with gr.Blocks(theme=gr.themes.Soft(primary_hue="blue", secondary_hue="cyan")) a
     <div style="text-align:center; padding: 20px;">
         <h1 style="font-size: 2.5em; color: #cee8ff;">🔬 Predicción de Diabetes</h1>
         <p style="color: #cee8ff; font-size: 1.1em;">
-            Completa tus datos para conocer tu riesgo según un modelo clínico de inteligencia artificial.
+            Completa tus datos para conocer tu riesgo según un modelo clínico de ML.
         </p>
     </div>
     """)
