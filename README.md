@@ -1,10 +1,3 @@
----
-title: dp25
-app_file: app.py
-sdk: gradio
-sdk_version: 5.49.1
----
-
 # Sistema de Detección de Diabetes con Inteligencia Artificial
 
 Este proyecto implementa un sistema de **detección temprana de diabetes** utilizando un modelo de **Machine Learning (Random Forest)** entrenado sobre datasets clínicos reales. Incluye un notebook de análisis completo y una **interfaz web interactiva con Gradio** para realizar predicciones en tiempo real.
@@ -149,6 +142,12 @@ Este sistema **no reemplaza un diagnóstico profesional**, pero sirve como apoyo
 2. **HbA1c**
 3. **IMC**
 4. **Edad**
+
+---
+
+## Importancia de Variables (Top 4)
+
+[https://huggingface.co/spaces/JuanDiegoCJ/dp25](https://huggingface.co/spaces/JuanDiegoCJ/dp25)
 
 ---
 
